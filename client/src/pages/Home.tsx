@@ -13,6 +13,7 @@ import {
   Moon,
   MoreHorizontal,
   Orbit,
+  Palette,
   PanelRight,
   Search,
   Share2,
@@ -185,20 +186,26 @@ function AccessTierCard({ tier }: { tier: (typeof accessTiers)[number] }) {
 
 export default function Home() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [themeStyle, setThemeStyle] = useState<"current" | "shadcn">("current");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem("spacex-theme") as "light" | "dark" | null;
+    const storedStyle = window.localStorage.getItem("spacex-theme-style") as "current" | "shadcn" | null;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(stored ?? (prefersDark ? "dark" : "light"));
+    setThemeStyle(storedStyle ?? "current");
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    const root = document.documentElement;
+    root.dataset.theme = themeStyle === "shadcn" ? "shadcn" : theme;
+    root.classList.toggle("dark", themeStyle === "shadcn" && theme === "dark");
     window.localStorage.setItem("spacex-theme", theme);
-  }, [theme]);
+    window.localStorage.setItem("spacex-theme-style", themeStyle);
+  }, [theme, themeStyle]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -242,6 +249,17 @@ export default function Home() {
             <Share2 size={16} strokeWidth={1.8} />
           </button>
           <ThemeToggle theme={theme} onToggle={() => setTheme(theme === "light" ? "dark" : "light")} />
+          <button
+            type="button"
+            className={`topbar-action style-toggle ${themeStyle === "shadcn" ? "is-active" : ""}`}
+            onClick={() => setThemeStyle((value) => value === "current" ? "shadcn" : "current")}
+            aria-label="Switch theme style"
+            aria-pressed={themeStyle === "shadcn"}
+            title="Switch theme style"
+          >
+            <Palette size={16} strokeWidth={1.8} />
+            <span className="style-toggle-label">{themeStyle === "shadcn" ? "Shadcn" : "Style"}</span>
+          </button>
           <button type="button" className="topbar-action mobile-only" onClick={() => setMobileMenuOpen((value) => !value)} aria-label="Open page navigation">
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>

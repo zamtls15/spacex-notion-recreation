@@ -1,0 +1,165 @@
+/* Shared semantic tokens: component styles consume these variables instead of theme-specific values. */
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 0.7rem;
+  --radius-sm: 0.45rem;
+  --launch-orange: #f0783c;
+  --launch-orange-soft: #fff1e9;
+  --paper: #fcfcfb;
+  --canvas: #f5f5f3;
+  --surface: #ffffff;
+  --surface-muted: #f7f7f6;
+  --ink: #1f1f1d;
+  --ink-muted: #656560;
+  --ink-faint: #969691;
+  --line: #e5e5e1;
+  --line-strong: #d4d4cf;
+  --shadow-soft: 0 12px 40px rgba(30, 30, 25, 0.06), 0 2px 8px rgba(30, 30, 25, 0.035);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--surface-muted);
+  --secondary-foreground: var(--ink-muted);
+  --muted: var(--surface-muted);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--launch-orange-soft);
+  --accent-foreground: #a6471c;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--launch-orange);
+  --destructive: #dc2626;
+  --destructive-foreground: #fff;
+  --focus-ring: color-mix(in srgb, var(--launch-orange) 42%, transparent);
+  color-scheme: light;
+}
+
+/* Theme-specific changes are token-only; all layout and component rules stay shared. */
+html[data-theme="dark"], html.dark {
+  color-scheme: dark;
+  --paper: #181817;
+  --canvas: #111110;
+  --surface: #20201e;
+  --surface-muted: #242422;
+  --ink: #f5f5f0;
+  --ink-muted: #b8b8b0;
+  --ink-faint: #8c8c84;
+  --line: #363633;
+  --line-strong: #4b4b46;
+  --launch-orange-soft: #3d261c;
+  --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.12);
+  --primary-foreground: #20201e;
+  --accent-foreground: #ffb28d;
+  --destructive: #f87171;
+  --destructive-foreground: #181817;
+  --focus-ring: color-mix(in srgb, var(--launch-orange) 58%, transparent);
+}
+
+html[data-theme="shadcn"] {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --launch-orange: var(--primary);
+  --launch-orange-soft: var(--accent);
+  --paper: var(--background);
+  --canvas: var(--background);
+  --surface: var(--card);
+  --surface-muted: var(--muted);
+  --ink: var(--foreground);
+  --ink-muted: var(--muted-foreground);
+  --ink-faint: var(--muted-foreground);
+  --line: var(--border);
+  --line-strong: var(--border);
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.035);
+  --focus-ring: color-mix(in srgb, var(--ring) 42%, transparent);
+}
+
+html[data-theme="shadcn"].dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --launch-orange: var(--primary);
+  --launch-orange-soft: var(--accent);
+  --paper: var(--background);
+  --canvas: var(--background);
+  --surface: var(--card);
+  --surface-muted: var(--muted);
+  --ink: var(--foreground);
+  --ink-muted: var(--muted-foreground);
+  --ink-faint: var(--muted-foreground);
+  --line: var(--border);
+  --line-strong: var(--border);
+  --shadow-soft: 0 16px 42px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.12);
+  --focus-ring: color-mix(in srgb, var(--ring) 58%, transparent);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--canvas); }
+body { margin: 0; min-width: 320px; background: var(--canvas); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+button, input { font: inherit; }
+button { border: 0; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; box-shadow: 0 0 0 4px var(--focus-ring); }
+button, input, textarea, select { border-radius: var(--radius-sm); }
+input, textarea, select { border: 1px solid var(--input); background: var(--surface); color: var(--ink); }
+input::placeholder, textarea::placeholder { color: var(--ink-faint); }
+::selection { background: var(--launch-orange); color: #fff; }
+
+@media (prefers-contrast: more) {
+  :root, html[data-theme="dark"], html[data-theme="shardcdn"], html[data-theme="shadcn"], html.dark { --line: var(--line-strong); }
+  body { color: var(--foreground); }
+}
