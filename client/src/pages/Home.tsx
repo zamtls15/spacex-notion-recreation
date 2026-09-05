@@ -23,10 +23,11 @@ import {
   X,
 } from "lucide-react";
 
-const coverImage = "/manus-storage/spacex-cover_64025b4d.jpg";
-const credentialImage = "/manus-storage/access-credential_7f907973.jpg";
-const orbitalImage = "/manus-storage/orbital-network_c88a9821.jpg";
-const logoImage = "/manus-storage/spacex-mark_d71cb87a.png";
+const assetPath = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+const coverImage = assetPath("spacex-cover.jpg");
+const credentialImage = assetPath("access-credential.jpg");
+const orbitalImage = assetPath("orbital-network.jpg");
+const logoImage = assetPath("spacex-mark.png");
 
 const sections = [
   { id: "overview", label: "Overview", number: "00" },
