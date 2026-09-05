@@ -12,11 +12,11 @@ Install dependencies with `pnpm install`, then run `pnpm dev` to start the Vite 
 
 ## Project structure
 
-Application code lives under `client/src`, with the page in `client/src/pages/Home.tsx`, global design tokens and responsive styling in `client/src/index.css`, and the top-level entry in `client/src/App.tsx`. Generated visual assets are referenced through the project-managed storage URLs required by the hosting workflow.
+Application code lives under `client/src`, with the page in `client/src/pages/Home.tsx`, global design tokens and responsive styling in `client/src/index.css`, and the top-level entry in `client/src/App.tsx`. Generated visual assets are stored in `client/public/assets/` so the repository can serve them directly.
 
 ## GitHub Pages
 
-The repository includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`. Each push to `main` runs the type check and production build, then publishes `dist/public` to GitHub Pages. The Vite base path is configured for `https://zamtls15.github.io/spacex-notion-recreation/` when the build runs in GitHub Actions.
+The production site is published from the `gh-pages` branch. The Vite base path is configured for `https://zamtls15.github.io/spacex-notion-recreation/` when the build runs with `GITHUB_ACTIONS=true`.
 
 All generated visual assets are stored in `client/public/assets/` and are referenced through `import.meta.env.BASE_URL`, so they work both locally and from the repository Pages subpath.
 
