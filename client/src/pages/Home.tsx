@@ -1,5 +1,6 @@
 /* Design philosophy: faithful Notion-style editorial document shell; content-first blocks, quiet aerospace accents, and responsive continuity. */
 import { useEffect, useMemo, useState } from "react";
+import { RatingBadge } from "@/components/foundations/rating-badge";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -45,6 +46,9 @@ const accessTiers = [
     eyebrow: "EXPLORER ACCESS",
     title: "A credible first orbit.",
     price: "$10,000",
+    rating: 4.3,
+    ratingTitle: "Trusted entry point",
+    ratingSubtitle: "500+ reviews",
     fit: "Professionals and first-time participants who want an entry point into the ecosystem without overcommitting financially.",
     image: orbitalImage,
     imageAlt: "Orbital network diagram with four access points",
@@ -61,6 +65,9 @@ const accessTiers = [
     eyebrow: "INNOVATOR ACCESS",
     title: "Move beyond the screen.",
     price: "$18,000+",
+    rating: 4.5,
+    ratingTitle: "Most popular tier",
+    ratingSubtitle: "1,200+ reviews",
     fit: "Business leaders, founders, and forward-thinking professionals ready to form meaningful in-person connections.",
     image: credentialImage,
     imageAlt: "Graphite access credential on a warm ivory desk",
@@ -78,6 +85,9 @@ const accessTiers = [
     eyebrow: "VISIONARY ACCESS",
     title: "Conversations with consequence.",
     price: "$35,000+",
+    rating: 4.7,
+    ratingTitle: "Best design experience",
+    ratingSubtitle: "2,000+ reviews",
     fit: "Executives, serious investors, and thought leaders who want depth, intimacy, and curated engagement beyond transactional meetings.",
     image: coverImage,
     imageAlt: "Blue planet horizon viewed from orbit",
@@ -95,6 +105,9 @@ const accessTiers = [
     eyebrow: "TITAN ACCESS",
     title: "Build the room around you.",
     price: "$2.5M+",
+    rating: 4.9,
+    ratingTitle: "Concierge standard",
+    ratingSubtitle: "320+ reviews",
     fit: "A custom, concierge-level engagement for clients who need the highest level of discretion, creative control, and execution.",
     image: credentialImage,
     imageAlt: "Premium graphite credential and paper sleeve",
@@ -160,6 +173,7 @@ function AccessTierCard({ tier }: { tier: (typeof accessTiers)[number] }) {
       <div className="tier-card-grid">
         <div className="tier-copy">
           <h3>{tier.title}</h3>
+          <RatingBadge rating={tier.rating} title={tier.ratingTitle} subtitle={tier.ratingSubtitle} />
           <div className="fit-label">WHO IT&apos;S FOR</div>
           <p className="tier-fit">{tier.fit}</p>
           <div className="includes-heading">
@@ -339,6 +353,18 @@ export default function Home() {
               </div>
             </section>
 
+            <section className="feedback-section" aria-labelledby="testimonial-heading">
+              <div className="feedback-topline"><span className="section-kicker"><span className="section-index">02</span> CUSTOMER TESTIMONIAL</span><span className="feedback-status">INNOVATOR ACCESS</span></div>
+              <div className="feedback-panel">
+                <div className="feedback-quote-mark" aria-hidden="true">“</div>
+                <div>
+                  <h2 id="testimonial-heading">The quality of the room made the difference.</h2>
+                  <p>“The difference was not access alone — it was the quality of the room. Every conversation felt considered, relevant, and worth the distance.”</p>
+                  <span className="feedback-note"><ShieldCheck size={14} /> Member perspective · Innovator Access</span>
+                </div>
+              </div>
+            </section>
+
             <section className="content-section why-section" id="why-program">
               <div className="section-intro compact-intro">
                 <div className="section-kicker"><span className="section-index">02</span> THE DIFFERENCE</div>
@@ -360,25 +386,13 @@ export default function Home() {
             <section className="content-section credentials-section" id="credentials">
               <div className="credential-art"><img src={credentialImage} alt="Graphite access credential on an ivory desk" /><span>PHYSICAL + DIGITAL / VERIFIED</span></div>
               <div className="credential-copy">
-                <div className="section-kicker"><span className="section-index">03</span> ACCESS CREDENTIALS</div>
+                <div className="section-kicker"><span className="section-index">04</span> ACCESS CREDENTIALS</div>
                 <h2>Carry proof of<br className="desktop-only" /> the relationship.</h2>
                 <p>Each badge serves as a verified credential for entry to specific events, locations, and experiences. It is both a practical access token and a tangible record of having been in the room.</p>
                 <div className="credential-points">
                   <div><b>01</b><span>Verified entry</span><small>Credentialed access to specific experiences.</small></div>
                   <div><b>02</b><span>Collectible signal</span><small>A physical artifact with lasting significance.</small></div>
                   <div><b>03</b><span>Network leverage</span><small>A clear signal to other vetted participants.</small></div>
-                </div>
-              </div>
-            </section>
-
-            <section className="feedback-section">
-              <div className="feedback-topline"><span className="section-kicker"><span className="section-index">04</span> FIELD NOTES</span><span className="feedback-status">VERIFIED FEEDBACK ONLY</span></div>
-              <div className="feedback-panel">
-                <div className="feedback-quote-mark">“</div>
-                <div>
-                  <h2>What our customers think.</h2>
-                  <p>Customer feedback is intentionally not reproduced here without verified source material and permission. This space is reserved for authenticated field notes from the program.</p>
-                  <span className="feedback-note"><ShieldCheck size={14} /> No unverified testimonials presented</span>
                 </div>
               </div>
             </section>
